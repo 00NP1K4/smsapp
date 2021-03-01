@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+        <main role="main" class="container">
+            <div class="jumbotron">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <h1>Are you sure you want to delete contact "{{queryset.name|upper}}"?</h1><br>
+                    <input class="btn btn-danger" type="submit" value="Yes" />
+                    <a href="/contacts"><div class="btn btn-primary">Cancel</div></a>
+                </form>
+                
+            </div>
+        </main>
+        
+{% endblock %}

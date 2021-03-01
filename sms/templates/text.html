@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="py-5 text-center">
+    <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-chat-left-text-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
+    </svg>
+    <h2>SEND SMS</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Sending To</span>
+        
+        <span class="badge badge-secondary badge-pill">{{count}}</span>
+        
+      </h4>
+      <ul class="list-group mb-3">
+        {% for i in tos %}
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <small class="text-muted">{{ i.number }}</small>
+          </div>
+          <span class="text-muted">
+            <a href='{% url 'delete_send' i.id %}' class="btn btn-outline-danger">Remove</a>
+          </span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-md-8 order-md-1" >
+      <form class="needs-validation" method = "POST" novalidate>
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="message">Message</label>
+          <div class="input-group">
+            <textarea class="form-control" rows="5" id="Message" name="message" required></textarea>
+          </div>
+        </div>
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">SEND</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

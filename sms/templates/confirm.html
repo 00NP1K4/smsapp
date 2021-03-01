@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+ <section class="jumbotron text-center">
+  {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                <h3 class="alert-heading" style = "text-align : center">{{message}}</h3>
+            </div>
+            {% endfor %}
+            {% endif %}
+    <div class="container">
+      <p>
+        <a href="{% url 'index' %}" class="btn btn-primary my-2">Return to Homepage</a>
+      </p>
+    </div>
+  </section>
+{% endblock  %}

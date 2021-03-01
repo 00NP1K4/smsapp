@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+ <section class="jumbotron text-center">
+  {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                <h3 class="alert-heading" style = "text-align : center">{{message}}</h3>
+            </div>
+            {% endfor %}
+            {% endif %}
+    <div class="container">
+      <h1>COMPUTERIZED SMS PORTAL</h1>
+      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+      <p>
+        <a href="{% url 'add' %}" class="btn btn-primary my-2">SEND SMS</a>
+        <a href="{% url 'add_contact' %}" class="btn btn-secondary my-2">CREATE CONTACT</a>
+      </p>
+    </div>
+  </section>
+{% endblock  %}
